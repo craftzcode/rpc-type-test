@@ -28,11 +28,11 @@ const app = new Hono().post(
       .where(eq(users.username, body.username))
 
     if (usernameExists) {
-      // return c.json({ error: 'Username already exists' }, 409)
+      return c.json({ error: 'Username already exists' }, 409)
       // throw new HTTPException(409, {
       //   res: c.json({ error: 'Username already exists' }, 409)
       // })
-      throw new HTTPException(409, { message: 'Username already exists' })
+      // throw new HTTPException(409, { message: 'Username already exists' })
     }
 
     const [emailExists] = await db
@@ -41,11 +41,11 @@ const app = new Hono().post(
       .where(eq(users.email, body.email))
 
     if (emailExists) {
-      // return c.json({ error: 'Email already exists' }, 409)
+      return c.json({ error: 'Email already exists' }, 409)
       // throw new HTTPException(409, {
       //   res: c.json({ error: 'Email already exists' }, 409)
       // })
-      throw new HTTPException(409, { message: 'Email already exists' })
+      // throw new HTTPException(409, { message: 'Email already exists' })
     }
 
     const hashedPassword = await bcrypt.hash(body.password, 10)

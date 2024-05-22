@@ -11,7 +11,12 @@ export const useSignUp = () => {
     mutationFn: async json => {
       const response = await client.api.signup.$post({ json })
 
-      const data = await response.json()
+      if (!response.ok) {
+        const { error } = await response.json()
+        throw new Error(error)
+      }
+
+      const { data } = await response.json()
 
       return data
     },

@@ -17,11 +17,11 @@ const app = new Hono().basePath('/api')
 //   return c.json({ error: 'Internal Server Error' }, 500)
 // })
 
-app.get('/hello', c => {
-  return c.json({
-    message: 'Hello Next.js!'
-  })
-})
+// app.get('/hello', c => {
+//   return c.json({
+//     message: 'Hello Next.js!'
+//   })
+// })
 
 const routes = app.route('/signup', signup)
 
